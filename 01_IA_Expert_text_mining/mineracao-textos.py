@@ -92,3 +92,10 @@ def extratorpalavras(documento):
 
 caracteristicasfrase = extratorpalavras(['tim', 'gole', 'nov'])
 #print(caracteristicasfrase)
+
+basecompleta = nltk.classify.apply_features(extratorpalavras, frasescomstemming)
+
+# constroi a tabela de probabilidade
+classificador = nltk.NaiveBayesClassifier.train(basecompleta)
+#print(classificador.labels())
+print(classificador.show_most_informative_features(5))

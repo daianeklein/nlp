@@ -55,3 +55,5 @@ Frase positiva ou negativa
 Procurar por:
 
 - Correlação entre as palavras
+- Naive Bayes
+
