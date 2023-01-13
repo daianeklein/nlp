@@ -98,4 +98,24 @@ basecompleta = nltk.classify.apply_features(extratorpalavras, frasescomstemming)
 # constroi a tabela de probabilidade
 classificador = nltk.NaiveBayesClassifier.train(basecompleta)
 #print(classificador.labels())
-print(classificador.show_most_informative_features(5))
+#print(classificador.show_most_informative_features(5))
+
+# realizando testes
+teste = 'estou com amor'
+teste_stemming = []
+stemmer = nltk.stem.RSLPStemmer()
+
+for (palavras) in teste.split():
+    comstem = [p for p in palavras.split()]
+    teste_stemming.append(str(stemmer.stem(comstem[0])))
+#print(teste_stemming)
+
+novo = extratorpalavras(teste_stemming)
+#print(novo)
+
+#print(classificador.classify(novo))
+
+#retornando a probabilidade
+distribuicao = classificador.prob_classify(novo)
+for classe in distribuicao.samples():
+    print("%s : %f" % (classe, distribuicao.prob(classe)))
